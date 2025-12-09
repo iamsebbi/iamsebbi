@@ -51,13 +51,18 @@ const Footer = () => {
 
           {/* 2. NAVIGATION */}
           <div className="flex flex-col space-y-3 md:items-center lg:items-start">
-            {["Home", "Work", "About", "Contact"].map((link) => (
+            {[
+              { label: "Home", href: "#hero" },
+              { label: "Work", href: "#works" },
+              { label: "About", href: "#about" },
+              { label: "Contact", href: "#contact" },
+            ].map((link) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                key={link.label}
+                href={link.href}
                 className="text-gray-400 hover:text-white transition-colors duration-300 w-fit text-sm uppercase tracking-wider font-medium"
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>

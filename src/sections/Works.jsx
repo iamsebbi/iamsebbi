@@ -86,7 +86,10 @@ const Works = () => {
   }, []);
 
   return (
-    <section className="bg-black relative w-full cursor-none min-h-screen">
+    <section
+      id="works"
+      className="bg-black relative w-full cursor-none min-h-screen"
+    >
       {/* 1. CUSTOM CURSOR - MODIFICARE AICI */}
       {/* Am adăugat 'hidden md:block' pentru a ascunde complet cursorul/tooltip-ul pe mobil */}
       <motion.div
