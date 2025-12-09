@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUp, Heart, Sparkles } from "lucide-react";
-import Button from "./components/button"; // <--- IMPORTĂM COMPONENTA TA
+import Button from "./Button";
 
 const Footer = () => {
   const [time, setTime] = useState("");

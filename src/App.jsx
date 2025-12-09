@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
-import Services from "./sections/Works";
+import Works from "./sections/Works";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 
@@ -12,7 +12,7 @@ export default function App() {
 
       <main>
         <Hero />
-        <Services />
+        <Works />
         <About />
         <Contact />
       </main>

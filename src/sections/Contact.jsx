@@ -8,7 +8,7 @@ import {
   Twitter,
   SendHorizontal,
 } from "lucide-react";
-import Button from "./components/button";
+import Button from "../components/Button";
 
 const SOCIAL_LINKS = [
   { icon: Instagram, href: "#", label: "Instagram" },
