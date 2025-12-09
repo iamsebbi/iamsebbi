@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 
-const useScrollSpy = (sectionIds, offset = 100) => {
+const useScrollSpy = (sectionIds, offsetPercent = 0.4) => {
   const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      // Verificăm poziția fiecărei secțiuni
+      const scrollPosition = window.scrollY + window.innerHeight * offsetPercent;
+
+      // Find the candidate section
+      // Logic: The section that contains the 'scrollPosition' point
       const currentSectionId = sectionIds.find((section) => {
         const element = document.getElementById(section);
         if (element) {
-          const rect = element.getBoundingClientRect();
-          // Dacă partea de sus a secțiunii e aproape de partea de sus a ecranului
-          // (plus offset-ul pentru navbar)
-          return rect.top <= offset && rect.bottom >= offset;
+          const { offsetTop, offsetHeight } = element;
+          // Check if our point (viewport top + 40% height) is within the section
+          return (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          );
         }
         return false;
       });
@@ -22,16 +27,13 @@ const useScrollSpy = (sectionIds, offset = 100) => {
       }
     };
 
-    // Ascultăm evenimentul de scroll
     window.addEventListener("scroll", handleScroll);
-
-    // Declanșăm o dată la încărcare
-    handleScroll();
+    handleScroll(); // Init
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [sectionIds, offset]);
+  }, [sectionIds, offsetPercent]);
 
   return activeId;
 };

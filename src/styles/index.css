@@ -76,9 +76,13 @@
        ============================================ */
 
     /* --- HERO SECTION --- */
-    /* text-5xl (48px/3rem) → text-6xl (60px/3.75rem) */
-    /* MIN = 65% din MAX = 2.4375rem (39px), MAX = 3.75rem (60px) */
-    --hero-hello: clamp(2.438rem, 2.438rem + 0.82vw, 3.75rem); /* 39px - 60px */
+    /* text-5xl (48px/3rem) → text-7xl (72px/4.5rem) */
+    /* MIN = 65% din MAX = 2.925rem (46.8px), MAX = 4.5rem (72px) */
+    --hero-hello: clamp(
+      2.925rem,
+      2.925rem + 0.984vw,
+      4.5rem
+    ); /* 46.8px - 72px */
 
     /* text-5xl (48px/3rem) → text-7xl (72px/4.5rem) */
     /* MIN = 65% din MAX = 2.925rem (46.8px), MAX = 4.5rem (72px) */
@@ -164,10 +168,10 @@
     /* --- NAVBAR --- */
     /* text-sm (14px/0.875rem) - fixed */
     --nav-link: clamp(
-      0.569rem,
+      0.75rem,
       0.569rem + 0.191vw,
       0.875rem
-    ); /* 9.1px - 14px */
+    ); /* 12px - 14px */
 
     /* --- BUTTON --- */
     /* text-[17px] = 1.0625rem - fixed */

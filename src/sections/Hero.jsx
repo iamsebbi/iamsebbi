@@ -41,12 +41,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4 mb-10"
+          className="flex flex-col md:flex-row items-center md:items-baseline gap-0 md:gap-4 mb-10"
         >
-          <span className="hero-hello font-sans font-bold tracking-tighter">
+          <span className="hero-hello font-sans font-bold tracking-tighter leading-none">
             hello
           </span>
-          <h1 className="hero-title font-sans font-bold tracking-tighter">
+          <h1 className="hero-title font-sans font-bold tracking-tighter leading-none -mt-2 md:mt-0">
             @iamsebbi
             <span className="ml-1 text-white">*</span>
           </h1>
