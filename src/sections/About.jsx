@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import Button from "../components/Button";
+import profileImage from "../assets/images/profile.jpg";
 
 const About = () => {
   // Configurație animații
@@ -42,7 +43,7 @@ const About = () => {
       >
         {/* 👇 AICI ESTE MODIFICAREA */}
         <img
-          src="/profile.jpg"
+          src={profileImage}
           alt="Profile"
           className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
         />
@@ -64,14 +65,14 @@ const About = () => {
             className="flex items-center gap-4 mb-6"
           >
             <span className="h-[1px] w-12 bg-indigo-500"></span>
-            <span className="text-indigo-400 uppercase tracking-widest text-sm font-semibold">
+            <span className="about-label text-indigo-400 uppercase tracking-widest font-semibold">
               Despre mine
             </span>
           </motion.div>
 
           <motion.h2
             variants={fadeIn}
-            className="text-4xl md:text-6xl font-bold mb-8 leading-tight"
+            className="about-heading font-bold mb-8 leading-tight"
           >
             Designul este <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
@@ -81,7 +82,7 @@ const About = () => {
 
           <motion.p
             variants={fadeIn}
-            className="text-gray-400 text-lg leading-relaxed mb-10"
+            className="about-paragraph text-gray-400 leading-relaxed mb-10"
           >
             Sunt un dezvoltator creativ pasionat de intersecția dintre artă și
             tehnologie. Cu o atenție obsesivă la detalii, transform idei
@@ -94,16 +95,16 @@ const About = () => {
             className="grid grid-cols-3 gap-8 mb-12 border-t border-white/10 pt-8"
           >
             <div>
-              <h4 className="text-3xl font-bold text-white">5+</h4>
-              <p className="text-sm text-gray-500 mt-1">Ani Experiență</p>
+              <h4 className="about-stat font-bold text-white">5+</h4>
+              <p className="footer-text text-gray-500 mt-1">Ani Experiență</p>
             </div>
             <div>
-              <h4 className="text-3xl font-bold text-white">40+</h4>
-              <p className="text-sm text-gray-500 mt-1">Proiecte</p>
+              <h4 className="about-stat font-bold text-white">40+</h4>
+              <p className="footer-text text-gray-500 mt-1">Proiecte</p>
             </div>
             <div>
-              <h4 className="text-3xl font-bold text-white">100%</h4>
-              <p className="text-sm text-gray-500 mt-1">Satisfacție</p>
+              <h4 className="about-stat font-bold text-white">100%</h4>
+              <p className="footer-text text-gray-500 mt-1">Satisfacție</p>
             </div>
           </motion.div>
 
@@ -112,10 +113,10 @@ const About = () => {
               icon={Download}
               rotateIcon={false}
               onClick={() => console.log("Download CV")}
-              className="!bg-white !text-black hover:!bg-gray-200"
-              iconClassName="text-black"
+              className="glass-button-dark !text-white"
+              iconClassName="!text-black"
             >
-              Descarcă CV
+              Resume
             </Button>
           </motion.div>
         </motion.div>

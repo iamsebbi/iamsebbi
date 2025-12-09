@@ -32,7 +32,7 @@ const Button = ({
                   rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.4)] 
                   transition-colors duration-300 ${className}`}
     >
-      <span className="text-[17px] font-medium text-white/90 tracking-tight group-hover:text-white transition-colors whitespace-nowrap">
+      <span className="button-text font-medium text-white/90 tracking-tight group-hover:text-white transition-colors whitespace-nowrap">
         {children}
       </span>
 

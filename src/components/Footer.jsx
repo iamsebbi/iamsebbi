@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowUp, Heart, Sparkles } from "lucide-react";
+import { ArrowUp, Sparkles } from "lucide-react";
 import Button from "./Button";
+import { FOOTER_LINKS } from "../constants/navigation";
+import { scrollToTop } from "../utils/scroll";
 
 const Footer = () => {
   const [time, setTime] = useState("");
@@ -19,13 +21,6 @@ const Footer = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <footer className="relative bg-black border-t border-white/10 pt-24 pb-12 overflow-hidden">
       {/* Background Noise */}
@@ -35,7 +30,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-24 items-start">
           {/* 1. BRANDING */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white tracking-tight">
+            <h3 className="footer-brand font-bold text-white tracking-tight">
               @iamsebbi
             </h3>
             <div className="flex items-center gap-2">
@@ -43,7 +38,7 @@ const Footer = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
               </span>
-              <p className="text-sm text-gray-400">
+              <p className="footer-text text-gray-400">
                 Available for new projects
               </p>
             </div>
@@ -51,16 +46,11 @@ const Footer = () => {
 
           {/* 2. NAVIGATION */}
           <div className="flex flex-col space-y-3 md:items-center lg:items-start">
-            {[
-              { label: "Home", href: "#hero" },
-              { label: "Work", href: "#works" },
-              { label: "About", href: "#about" },
-              { label: "Contact", href: "#contact" },
-            ].map((link) => (
+            {FOOTER_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-400 hover:text-white transition-colors duration-300 w-fit text-sm uppercase tracking-wider font-medium"
+                className="footer-text text-gray-400 hover:text-white transition-colors duration-300 w-fit uppercase tracking-wider font-medium"
               >
                 {link.label}
               </a>
@@ -85,18 +75,19 @@ const Footer = () => {
 
             {/* Ora Locală */}
             <div className="flex flex-col md:items-end">
-              <span className="text-xs text-gray-500 uppercase tracking-widest mb-1">
+              <span className="footer-label text-gray-500 uppercase tracking-widest mb-1">
                 Local time
               </span>
-              <span className="text-xl font-mono text-white/80">
-                {time} <span className="text-gray-600 text-sm ml-1">RO</span>
+              <span className="footer-time font-mono text-white/80">
+                {time}{" "}
+                <span className="footer-text text-gray-600 ml-1">RO</span>
               </span>
             </div>
           </div>
         </div>
 
         {/* COPYRIGHT */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 footer-text text-gray-500">
           <p>
             &copy; {new Date().getFullYear()} @iamsebbi. All rights reserved.
           </p>

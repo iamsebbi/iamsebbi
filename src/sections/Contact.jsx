@@ -1,20 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Mail,
-  Instagram,
-  Linkedin,
-  Twitter,
-  SendHorizontal,
-} from "lucide-react";
+import { ArrowRight, Mail, SendHorizontal } from "lucide-react";
 import Button from "../components/Button";
-
-const SOCIAL_LINKS = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-];
+import { SOCIAL_LINKS } from "../constants/social";
+import globeIcon from "../assets/images/globe.svg";
 
 const Contact = () => {
   const handleSubmit = (e) => {
@@ -51,7 +40,7 @@ const Contact = () => {
                   mt-0 -ml-2
                 "
               />
-              <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter leading-none">
+              <h2 className="contact-title font-bold text-white tracking-tighter leading-none">
                 Let's get <br className="hidden sm:block" /> in touch*
               </h2>
             </div>
@@ -59,12 +48,12 @@ const Contact = () => {
             {/* Email & Social */}
             <div className="space-y-10 sm:space-y-12">
               <div className="space-y-3">
-                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-widest font-medium">
+                <p className="contact-label text-gray-500 uppercase tracking-widest font-medium">
                   Email Drop
                 </p>
                 <a
                   href="mailto:contact@iamsebbi.com"
-                  className="text-xl sm:text-2xl md:text-3xl text-white font-medium hover:text-[#007AFF] transition-colors flex items-center gap-3 group break-all"
+                  className="contact-email text-white font-medium hover:text-[#007AFF] transition-colors flex items-center gap-3 group break-all"
                 >
                   <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500 group-hover:text-[#007AFF] transition-colors flex-shrink-0" />
                   prisecarusebastiann@gmail.com
@@ -72,7 +61,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-4">
-                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-widest font-medium">
+                <p className="contact-label text-gray-500 uppercase tracking-widest font-medium">
                   Follow Me
                 </p>
                 <div className="flex gap-4 sm:gap-6">
@@ -91,7 +80,7 @@ const Contact = () => {
 
               {/* Globe SVG */}
               <div className="pt-2 sm:pt-4">
-                <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-widest mb-4 sm:mb-5 font-medium">
+                <p className="contact-label text-gray-500 uppercase tracking-widest mb-4 sm:mb-5 font-medium">
                   Global Presence
                 </p>
                 <div className="flex gap-4 sm:gap-6 lg:gap-8 items-center justify-between sm:justify-start flex-nowrap">
@@ -101,7 +90,7 @@ const Contact = () => {
                       className="flex-1 sm:flex-none w-full sm:w-24 lg:w-28 h-20 sm:h-24 lg:h-28 max-w-[100px] sm:max-w-none flex items-center justify-center"
                     >
                       <img
-                        src="/globe.svg"
+                        src={globeIcon}
                         alt={`Globe ${num}`}
                         className="w-full h-full filter invert opacity-80"
                       />
@@ -122,35 +111,35 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div className="space-y-2">
-                <label className="text-xs sm:text-sm text-gray-400 font-medium ml-1 block">
+                <label className="contact-label text-gray-400 font-medium ml-1 block">
                   Nume
                 </label>
                 <input
                   type="text"
                   placeholder="Ex: Alex Popescu"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300"
+                  className="contact-input w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs sm:text-sm text-gray-400 font-medium ml-1 block">
+                <label className="contact-label text-gray-400 font-medium ml-1 block">
                   Email
                 </label>
                 <input
                   type="email"
                   placeholder="alex@exemplu.ro"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300"
+                  className="contact-input w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300"
                   required
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs sm:text-sm text-gray-400 font-medium ml-1 block">
+                <label className="contact-label text-gray-400 font-medium ml-1 block">
                   Mesaj
                 </label>
                 <textarea
                   rows="4"
                   placeholder="Povestește-mi despre proiectul tău..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300 resize-none min-h-[100px] sm:min-h-[120px]"
+                  className="contact-input w-full bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl px-4 sm:px-5 py-3 sm:py-4 text-white placeholder-gray-600 focus:outline-none focus:border-[#007AFF]/50 focus:bg-white/10 transition-all duration-300 resize-none min-h-[100px] sm:min-h-[120px]"
                   required
                 ></textarea>
               </div>

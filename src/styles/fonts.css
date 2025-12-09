@@ -1,10 +1,9 @@
 /* Folosim doar varianta Variable pentru performanță maximă */
 @font-face {
   font-family: "Clash Display";
-  /* Punctul (.) înseamnă "în acest folder" */
-  src: url("./ClashDisplay-Variable.woff2") format("woff2"),
-    url("./ClashDisplay-Variable.woff") format("woff"),
-    url("./ClashDisplay-Variable.ttf") format("truetype");
+  src: url("../assets/fonts/ClashDisplay-Variable.woff2") format("woff2"),
+    url("../assets/fonts/ClashDisplay-Variable.woff") format("woff"),
+    url("../assets/fonts/ClashDisplay-Variable.ttf") format("truetype");
   font-weight: 200 700; /* Acoperă toate greutățile de la ExtraLight la Bold */
   font-display: swap;
   font-style: normal;

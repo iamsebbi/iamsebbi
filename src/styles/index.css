@@ -1,0 +1,355 @@
+/* 1. Importul Source Serif 4 (rămâne pentru accente) */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ============================================
+     APPLE COLOR SYSTEM (2025)
+     CSS Variables for Theming - Light & Dark Mode
+     ============================================ */
+
+  :root {
+    /* --- LIGHT MODE (Default) --- */
+
+    /* Background */
+    --color-background: #ffffff; /* White */
+    --color-background-alt: #fafafa; /* Slightly off-white */
+
+    /* Surface (Bento Cards) */
+    --color-surface: #f5f5f7; /* Apple Light Gray */
+    --color-surface-light: #e8e8ed; /* Surface hover state */
+    --color-surface-border: rgba(0, 0, 0, 0.1); /* Subtle border */
+
+    /* Text */
+    --color-text-main: #1d1d1f; /* Apple Dark Gray - Primary text */
+    --color-text-muted: #86868b; /* Apple Medium Gray - Secondary text */
+    --color-text-subtle: #6e6e73; /* Subtle text */
+    --color-text-inverse: #f5f5f7; /* Inverse text (for dark surfaces) */
+
+    /* Accent (Buttons/Links) */
+    --color-accent: #0066cc; /* Apple Blue - Light mode */
+    --color-accent-hover: #0051a5; /* Darker blue for hover */
+    --color-accent-active: #003d7a; /* Active state */
+
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.8); /* Light mode glass */
+    --glass-border: rgba(0, 0, 0, 0.1);
+  }
+
+  .dark {
+    /* --- DARK MODE --- */
+
+    /* Background */
+    --color-background: #000000; /* Black */
+    --color-background-alt: #0a0a0a; /* Slightly off-black */
+
+    /* Surface (Bento Cards) */
+    --color-surface: #1d1d1f; /* Apple Dark Gray */
+    --color-surface-light: #2c2c2e; /* Surface hover state */
+    --color-surface-border: rgba(255, 255, 255, 0.1); /* Subtle border */
+
+    /* Text */
+    --color-text-main: #f5f5f7; /* Apple Light Gray - Primary text */
+    --color-text-muted: #a1a1a6; /* Apple Medium Gray - Secondary text */
+    --color-text-subtle: #8e8e93; /* Subtle text */
+    --color-text-inverse: #1d1d1f; /* Inverse text (for light surfaces) */
+
+    /* Accent (Buttons/Links) - Higher saturation for dark mode */
+    --color-accent: #2997ff; /* Apple Blue - Dark mode (higher saturation) */
+    --color-accent-hover: #4da6ff; /* Lighter blue for hover */
+    --color-accent-active: #1a7fcc; /* Active state */
+
+    /* Glassmorphism */
+    --glass-bg: rgba(29, 29, 31, 0.8); /* Dark mode glass */
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Typography variables - shared between light and dark mode */
+  :root,
+  .dark {
+    /* ============================================
+       FLUID TYPOGRAPHY SYSTEM - clamp() 
+       Reguli: MAX = desktop, MIN = 65% din MAX, IDEAL = vw + rem
+       ============================================ */
+
+    /* --- HERO SECTION --- */
+    /* text-5xl (48px/3rem) → text-6xl (60px/3.75rem) */
+    /* MIN = 65% din MAX = 2.4375rem (39px), MAX = 3.75rem (60px) */
+    --hero-hello: clamp(2.438rem, 2.438rem + 0.82vw, 3.75rem); /* 39px - 60px */
+
+    /* text-5xl (48px/3rem) → text-7xl (72px/4.5rem) */
+    /* MIN = 65% din MAX = 2.925rem (46.8px), MAX = 4.5rem (72px) */
+    --hero-title: clamp(
+      2.925rem,
+      2.925rem + 0.984vw,
+      4.5rem
+    ); /* 46.8px - 72px */
+
+    /* --- ABOUT SECTION --- */
+    /* text-sm (14px/0.875rem) - fixed */
+    --about-label: clamp(
+      0.569rem,
+      0.569rem + 0.191vw,
+      0.875rem
+    ); /* 9.1px - 14px */
+
+    /* text-4xl (36px/2.25rem) → text-6xl (60px/3.75rem) */
+    --about-heading: clamp(
+      1.463rem,
+      1.463rem + 1.431vw,
+      3.75rem
+    ); /* 23.4px - 60px */
+
+    /* text-lg (18px/1.125rem) - fixed */
+    --about-paragraph: clamp(
+      0.731rem,
+      0.731rem + 0.246vw,
+      1.125rem
+    ); /* 11.7px - 18px */
+
+    /* text-3xl (30px/1.875rem) - fixed */
+    --about-stat: clamp(
+      1.219rem,
+      1.219rem + 0.41vw,
+      1.875rem
+    ); /* 19.5px - 30px */
+
+    /* --- WORKS SECTION --- */
+    /* text-xs (12px/0.75rem) - fixed */
+    --works-category: clamp(
+      0.488rem,
+      0.488rem + 0.164vw,
+      0.75rem
+    ); /* 7.8px - 12px */
+
+    /* text-3xl (30px/1.875rem) - fixed */
+    --works-title: clamp(
+      1.219rem,
+      1.219rem + 0.41vw,
+      1.875rem
+    ); /* 19.5px - 30px */
+
+    /* --- FOOTER SECTION --- */
+    /* text-2xl (24px/1.5rem) - fixed */
+    --footer-brand: clamp(
+      0.975rem,
+      0.975rem + 0.328vw,
+      1.5rem
+    ); /* 15.6px - 24px */
+
+    /* text-sm (14px/0.875rem) - fixed */
+    --footer-text: clamp(
+      0.569rem,
+      0.569rem + 0.191vw,
+      0.875rem
+    ); /* 9.1px - 14px */
+
+    /* text-xs (12px/0.75rem) - fixed */
+    --footer-label: clamp(
+      0.488rem,
+      0.488rem + 0.164vw,
+      0.75rem
+    ); /* 7.8px - 12px */
+
+    /* text-xl (20px/1.25rem) - fixed */
+    --footer-time: clamp(
+      0.813rem,
+      0.813rem + 0.273vw,
+      1.25rem
+    ); /* 13px - 20px */
+
+    /* --- NAVBAR --- */
+    /* text-sm (14px/0.875rem) - fixed */
+    --nav-link: clamp(
+      0.569rem,
+      0.569rem + 0.191vw,
+      0.875rem
+    ); /* 9.1px - 14px */
+
+    /* --- BUTTON --- */
+    /* text-[17px] = 1.0625rem - fixed */
+    --button-text: clamp(
+      0.691rem,
+      0.691rem + 0.232vw,
+      1.063rem
+    ); /* 11.05px - 17px */
+
+    /* --- CONTACT SECTION (deja existent, păstrăm) --- */
+    --contact-title: clamp(3.12rem, 3.12rem + 2.4vw, 6rem); /* 49.92px - 96px */
+    --contact-email: clamp(
+      1.125rem,
+      1.125rem + 0.75vw,
+      1.875rem
+    ); /* 18px - 30px */
+    --contact-label: clamp(
+      0.525rem,
+      0.525rem + 0.35vw,
+      0.875rem
+    ); /* 8.4px - 14px */
+    --contact-input: clamp(0.65rem, 0.65rem + 0.35vw, 1rem); /* 10.4px - 16px */
+  }
+
+  html {
+    /* Setăm Clash Display ca font global */
+    font-family: "Clash Display", sans-serif;
+    color: var(--color-text-main);
+    background-color: var(--color-background);
+    /* Smooth transition pentru schimbarea temei */
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+  }
+
+  /* Opțional: Titlurile le facem puțin mai groase automat */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ============================================
+   FLUID TYPOGRAPHY UTILITIES
+   ============================================ */
+@layer utilities {
+  /* --- HERO --- */
+  .hero-hello {
+    font-size: var(--hero-hello);
+  }
+
+  .hero-title {
+    font-size: var(--hero-title);
+  }
+
+  /* --- ABOUT --- */
+  .about-label {
+    font-size: var(--about-label);
+  }
+
+  .about-heading {
+    font-size: var(--about-heading);
+  }
+
+  .about-paragraph {
+    font-size: var(--about-paragraph);
+  }
+
+  .about-stat {
+    font-size: var(--about-stat);
+  }
+
+  /* --- WORKS --- */
+  .works-category {
+    font-size: var(--works-category);
+  }
+
+  .works-title {
+    font-size: var(--works-title);
+  }
+
+  /* --- FOOTER --- */
+  .footer-brand {
+    font-size: var(--footer-brand);
+  }
+
+  .footer-text {
+    font-size: var(--footer-text);
+  }
+
+  .footer-label {
+    font-size: var(--footer-label);
+  }
+
+  .footer-time {
+    font-size: var(--footer-time);
+  }
+
+  /* --- NAVBAR --- */
+  .nav-link {
+    font-size: var(--nav-link);
+  }
+
+  /* --- BUTTON --- */
+  .button-text {
+    font-size: var(--button-text);
+  }
+
+  /* --- CONTACT --- */
+  .contact-title {
+    font-size: var(--contact-title);
+  }
+
+  .contact-email {
+    font-size: var(--contact-email);
+  }
+
+  .contact-label {
+    font-size: var(--contact-label);
+  }
+
+  .contact-input {
+    font-size: var(--contact-input);
+  }
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITY
+   Apple-style glass effect for navbar
+   ============================================ */
+@layer components {
+  .glass-navbar {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Dark Glassmorphism Button - pentru butonul din About */
+  .glass-button-dark {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .glass-button-dark:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* Icon circle cu glassmorphism - cerc alb, icon negru */
+  .glass-button-dark > div:last-child {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+      0 0 15px rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .glass-button-dark:hover > div:last-child {
+    background-color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5),
+      0 0 25px rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* Icon-ul să fie negru */
+  .glass-button-dark svg {
+    color: black !important;
+  }
+}

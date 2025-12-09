@@ -1,56 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
 import useScrollSpy from "../hooks/useScrollSpy";
+import { NAV_LINKS } from "../constants/navigation";
+import { scrollToSection } from "../utils/scroll";
 
 const Navbar = () => {
-  const navLinks = [
-    { id: "hero", label: "Home" },
-    { id: "works", label: "Works" },
-    { id: "about", label: "About" },
-    { id: "contact", label: "Contact" },
-  ];
-
-  const sectionIds = navLinks.map((link) => link.id);
+  const sectionIds = NAV_LINKS.map((link) => link.id);
   const activeSection = useScrollSpy(sectionIds);
 
-  const scrollToSection = (e, id) => {
+  const handleScrollToSection = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollToSection(id);
   };
 
   return (
     <div className="fixed top-6 inset-x-0 max-w-fit mx-auto z-50">
-      <nav
-        className="
-        flex items-center gap-1 px-1.5 py-1.5 rounded-full
-        
-        /* --- DARK GLASSMORPHISM --- */
-        /* Fundal: #161617 (Apple Dark Grey) cu opacitate 80% */
-        bg-[#161617]/80
-        
-        /* Blur și Saturație pentru efectul 'Vibrancy' */
-        backdrop-blur-[20px] 
-        backdrop-saturate-[180%]
-        
-        /* Border subtil alb (12% opacitate) pentru contrast pe fundal negru */
-        border border-white/10
-        
-        shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-      "
-      >
-        {navLinks.map((link) => {
+      <nav className="glass-navbar flex items-center gap-1 px-1.5 py-1.5 rounded-full">
+        {NAV_LINKS.map((link) => {
           const isActive = activeSection === link.id;
 
           return (
             <a
               key={link.id}
               href={`#${link.id}`}
-              onClick={(e) => scrollToSection(e, link.id)}
+              onClick={(e) => handleScrollToSection(e, link.id)}
               className={`
-                relative px-5 py-2.5 text-sm font-medium rounded-full transition-colors duration-300
+                nav-link relative px-5 py-2.5 font-medium rounded-full transition-colors duration-300
                 ${
                   isActive
                     ? "text-black" /* Text Negru pe pastila Albă */

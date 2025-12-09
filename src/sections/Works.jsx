@@ -1,41 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import Button from "../components/Button";
-
-// --- DATELE ---
-const projects = [
-  {
-    id: 1,
-    title: "Minimalist E-Shop",
-    category: "Web Design",
-    image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Neon Cyberpunk App",
-    category: "Mobile UI",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-  },
-];
-
-const projectsRow2 = [
-  {
-    id: 3,
-    title: "Architecture Portfolio",
-    category: "Branding",
-    image:
-      "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    title: "AI Data Visualization",
-    category: "Development",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop",
-  },
-];
+import { projects, projectsRow2 } from "../constants/projects";
 
 // --- COMPONENTA CARD ---
 const ProjectCard = ({ project, setCursorActive, setCursorText }) => {
@@ -57,10 +23,10 @@ const ProjectCard = ({ project, setCursorActive, setCursorText }) => {
       />
       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="absolute bottom-10 left-10 z-10 pointer-events-none translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-        <span className="text-indigo-400 text-xs font-bold uppercase tracking-widest mb-2 block">
+        <span className="works-category text-indigo-400 font-bold uppercase tracking-widest mb-2 block">
           {project.category}
         </span>
-        <h3 className="text-3xl font-bold text-white">{project.title}</h3>
+        <h3 className="works-title font-bold text-white">{project.title}</h3>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import "./index.css"; // <--- ACEASTĂ LINIE ESTE CRUCIALĂ!
-import "./assets/fonts/clash-display.css";
+import "./styles/index.css";
+import "./styles/fonts.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

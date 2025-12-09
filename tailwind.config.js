@@ -12,6 +12,45 @@ export default {
         // Îl vei folosi manual cu clasa 'font-serif'
         serif: ['"Source Serif 4"', "serif"],
       },
+      fontSize: {
+        // Fluid Typography using CSS custom properties with clamp()
+        // These will automatically scale between min and max based on viewport
+        xs: "var(--font-size-xs)",
+        sm: "var(--font-size-sm)",
+        base: "var(--font-size-base)",
+        lg: "var(--font-size-lg)",
+        xl: "var(--font-size-xl)",
+        "2xl": "var(--font-size-2xl)",
+        "3xl": "var(--font-size-3xl)",
+        "4xl": "var(--font-size-4xl)",
+        "5xl": "var(--font-size-5xl)",
+        "6xl": "var(--font-size-6xl)",
+        "7xl": "var(--font-size-7xl)",
+        "8xl": "var(--font-size-8xl)",
+      },
+      colors: {
+        // Apple Color System (2025) - Light & Dark Mode
+        background: {
+          DEFAULT: "var(--color-background)",
+          alt: "var(--color-background-alt)",
+        },
+        surface: {
+          DEFAULT: "var(--color-surface)",
+          light: "var(--color-surface-light)",
+          border: "var(--color-surface-border)",
+        },
+        text: {
+          main: "var(--color-text-main)",
+          muted: "var(--color-text-muted)",
+          subtle: "var(--color-text-subtle)",
+          inverse: "var(--color-text-inverse)",
+        },
+        accent: {
+          DEFAULT: "var(--color-accent)",
+          hover: "var(--color-accent-hover)",
+          active: "var(--color-accent-active)",
+        },
+      },
     },
   },
   plugins: [],

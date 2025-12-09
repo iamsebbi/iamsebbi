@@ -1,0 +1,24 @@
+/**
+ * Typography Utilities with Clamp System
+ * 
+ * The clamp-based typography system is now active!
+ * 
+ * HOW IT WORKS:
+ * - All Tailwind text size classes (text-xs, text-sm, text-xl, etc.) now use clamp()
+ * - Font sizes automatically scale smoothly between min and max values based on viewport width
+ * - No need for multiple responsive classes - one class handles all screen sizes
+ * 
+ * USAGE:
+ * Before: <h1 className="text-5xl md:text-6xl lg:text-7xl">Title</h1>
+ * After:  <h1 className="text-5xl">Title</h1> (automatically scales!)
+ * 
+ * You can still use responsive classes if you need different sizes at breakpoints,
+ * but the clamp system provides smooth scaling without breakpoints.
+ * 
+ * CUSTOMIZATION:
+ * Edit the CSS variables in src/styles/index.css to adjust the min/max values
+ * for each font size.
+ */
+@layer utilities {
+  /* Additional typography utilities can be added here */
+}
