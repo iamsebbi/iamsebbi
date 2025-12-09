@@ -29,7 +29,7 @@ const Navbar = () => {
                 ${
                   isActive
                     ? "text-black" /* Text Negru pe pastila Albă */
-                    : "text-[#86868b] hover:text-white" /* Text Gri -> Alb la hover */
+                    : "text-[#86868b] md:hover:text-white" /* Text Gri -> Alb la hover doar pe Desktop */
                 }
               `}
             >
