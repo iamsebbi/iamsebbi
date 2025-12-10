@@ -124,17 +124,17 @@
     /* --- WORKS SECTION --- */
     /* text-xs (12px/0.75rem) - fixed */
     --works-category: clamp(
-      0.488rem,
-      0.488rem + 0.164vw,
-      0.75rem
+      0.988rem /* 7.8px */,
+      0.988rem + 0.164vw,
+      1.1rem /* 12px */
     ); /* 7.8px - 12px */
 
-    /* text-3xl (30px/1.875rem) - fixed */
+    /* text-3xl (30px/1.875rem) → text-7xl (72px/4.5rem) for desktop brutalist */
     --works-title: clamp(
-      1.219rem,
-      1.219rem + 0.41vw,
-      1.875rem
-    ); /* 19.5px - 30px */
+      1.5rem /* 24px mobile */,
+      1.5rem + 3vw,
+      6rem /* 96px desktop */
+    );
 
     /* --- FOOTER SECTION --- */
     /* text-2xl (24px/1.5rem) - fixed */
@@ -174,20 +174,20 @@
     ); /* 12px - 14px */
 
     /* --- BUTTON --- */
-    /* text-[17px] = 1.0625rem - fixed */
+    /* Optimized for mobile readability */
     --button-text: clamp(
-      0.691rem,
-      0.691rem + 0.232vw,
-      1.063rem
-    ); /* 11.05px - 17px */
+      1rem /* 16px mobile */,
+      1rem + 0.125vw,
+      1.125rem /* 18px desktop */
+    );
 
     /* --- CONTACT SECTION (deja existent, păstrăm) --- */
     --contact-title: clamp(3.12rem, 3.12rem + 2.4vw, 6rem); /* 49.92px - 96px */
     --contact-email: clamp(
-      1.125rem,
-      1.125rem + 0.75vw,
-      1.875rem
-    ); /* 18px - 30px */
+      1rem /* 16px mobile */,
+      1rem + 0.875vw,
+      1.875rem /* 30px desktop */
+    );
     --contact-label: clamp(
       0.525rem,
       0.525rem + 0.35vw,

@@ -60,51 +60,71 @@ const About = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
+          {/* Section Label */}
           <motion.div
             variants={fadeIn}
             className="flex items-center gap-4 mb-6"
           >
-            <span className="h-[1px] w-12 bg-indigo-500"></span>
-            <span className="about-label text-indigo-400 uppercase tracking-widest font-semibold">
-              Despre mine
+            <span className="h-[1px] w-12 bg-white/40"></span>
+            <span className="about-label text-gray-400 uppercase tracking-widest font-semibold">
+              About me
             </span>
           </motion.div>
 
+          {/* Title */}
           <motion.h2
             variants={fadeIn}
-            className="about-heading font-bold mb-8 leading-tight"
+            className="about-heading font-bold mb-6 leading-tight"
           >
-            Designul este <br />
+            Creative Developer <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-              inteligență vizuală.
+              & UI/UX Designer
             </span>
           </motion.h2>
 
+          {/* Short Description */}
           <motion.p
             variants={fadeIn}
-            className="about-paragraph text-gray-400 leading-relaxed mb-10"
+            className="about-paragraph text-gray-400 leading-relaxed mb-8"
           >
-            Sunt un dezvoltator creativ pasionat de intersecția dintre artă și
-            tehnologie. Cu o atenție obsesivă la detalii, transform idei
-            abstracte în experiențe digitale fluide și memorabile. Nu scriu doar
-            cod, ci construiesc povești interactive.
+            Passionate about creating unique digital experiences, I combine art with 
+            technology to transform visions into reality. Every project 
+            is an opportunity to innovate and exceed expectations.
           </motion.p>
 
+          {/* Technical Skills */}
+          <motion.div variants={fadeIn} className="mb-10">
+            <h3 className="text-xs uppercase tracking-widest text-gray-500 mb-4">
+              Technical Skills
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {["React", "JavaScript", "TypeScript", "Node.js", "Next.js", "Tailwind CSS", "Figma", "Git"].map((skill) => (
+                <span
+                  key={skill}
+                  className="px-4 py-2 text-sm bg-white/5 border border-white/10 rounded-full text-gray-300 hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Experience Stats */}
           <motion.div
             variants={fadeIn}
             className="grid grid-cols-3 gap-8 mb-12 border-t border-white/10 pt-8"
           >
             <div>
               <h4 className="about-stat font-bold text-white">5+</h4>
-              <p className="footer-text text-gray-500 mt-1">Ani Experiență</p>
+              <p className="footer-text text-gray-500 mt-1">Years Experience</p>
             </div>
             <div>
               <h4 className="about-stat font-bold text-white">40+</h4>
-              <p className="footer-text text-gray-500 mt-1">Proiecte</p>
+              <p className="footer-text text-gray-500 mt-1">Projects</p>
             </div>
             <div>
               <h4 className="about-stat font-bold text-white">100%</h4>
-              <p className="footer-text text-gray-500 mt-1">Satisfacție</p>
+              <p className="footer-text text-gray-500 mt-1">Satisfaction</p>
             </div>
           </motion.div>
 
@@ -113,8 +133,6 @@ const About = () => {
               icon={Download}
               rotateIcon={false}
               onClick={() => console.log("Download CV")}
-              className="glass-button-dark !text-white"
-              iconClassName="!text-black"
             >
               Resume
             </Button>

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, SendHorizontal } from "lucide-react";
+import { ArrowUpRight, Mail, SendHorizontal } from "lucide-react";
 import Button from "../components/Button";
 import { SOCIAL_LINKS } from "../constants/social";
 import globeIcon from "../assets/images/globe.svg";
@@ -29,15 +29,14 @@ const Contact = () => {
             className="space-y-10 sm:space-y-12 lg:space-y-14 h-full flex flex-col justify-between p-6 sm:p-8 lg:p-10"
           >
             {/* Header */}
-            <div className="flex items-start gap-4 sm:gap-6 md:gap-8 mb-2">
-              <ArrowRight
+            <div className="flex items-start gap-1 sm:gap-2 md:gap-3 mb-2">
+              <ArrowUpRight
                 strokeWidth={1.5}
                 className="
                   text-white 
-                  transition-transform duration-500 hover:translate-x-4
                   flex-shrink-0
-                  w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32
-                  mt-0 -ml-2
+                  w-36 h-36 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-46 lg:h-46
+                  -mt-2 -ml-3
                 "
               />
               <h2 className="contact-title font-bold text-white tracking-tighter leading-none">
