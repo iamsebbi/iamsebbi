@@ -65,7 +65,12 @@ const Hero = () => {
         >
           {/* Folosim componenta reutilizabilă Button */}
           {/* Nu trebuie să specificăm icon={ArrowRight} pentru că e default */}
-          <Button onClick={handleScrollToContact}>let's talk</Button>
+          <Button
+            onClick={handleScrollToContact}
+            className="w-40 justify-between" 
+          >
+            let's talk*
+          </Button>
         </motion.div>
       </div>
     </section>
