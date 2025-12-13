@@ -1,11 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import Button from "../components/Button";
+import MagnifyText from "../components/MagnifyText";
 import { scrollToSection } from "../utils/scroll";
-import heroBg from "../assets/images/hero-bg.jpg";
-
-// Noise texture SVG for background overlay
-const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")`;
 
 // Animation configurations
 const TEXT_ANIMATION = {
@@ -20,6 +18,23 @@ const BUTTON_ANIMATION = {
   transition: { duration: 0.6, delay: 0.5, type: "spring", stiffness: 200 }
 };
 
+const SCROLL_INDICATOR_ANIMATION = {
+  initial: { opacity: 0, y: -10 },
+  animate: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      opacity: { duration: 0.8, delay: 0.8 },
+      y: { 
+        duration: 1.5,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut"
+      }
+    }
+  }
+};
+
 const Hero = () => {
   const handleScrollToContact = () => scrollToSection("contact");
 
@@ -28,22 +43,19 @@ const Hero = () => {
       id="hero"
       className="relative h-screen flex items-center justify-center px-6 overflow-hidden bg-black"
     >
-      {/* Background Layer */}
+      {/* Video Background Layer */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt="Background"
-          className="w-full h-full object-cover opacity-60 blur-2xl scale-125"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src="/heroVideo.mp4"
         />
-        <div className="absolute inset-0 bg-black/40" />
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: NOISE_BG,
-            backgroundRepeat: "repeat",
-            backgroundSize: "50px",
-          }}
-        />
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       {/* Content Layer */}
@@ -51,14 +63,37 @@ const Hero = () => {
         {/* Hero Text */}
         <motion.div
           {...TEXT_ANIMATION}
-          className="flex flex-col md:flex-row items-center md:items-baseline gap-0 md:gap-4 mb-10"
+          className="flex flex-col md:flex-row items-center md:items-baseline gap-0 md:gap-4 mb-10 cursor-default"
         >
-          <span className="hero-hello font-sans font-bold tracking-tighter leading-none">
-            hello
-          </span>
-          <h1 className="hero-title font-sans font-bold tracking-tighter leading-none -mt-2 md:mt-0">
-            @iamsebbi
-            <span className="ml-1 text-white">*</span>
+          <MagnifyText
+            text="hello"
+            className="hero-hello font-sans tracking-tighter leading-none"
+            minWeight={300}
+            maxWeight={900}
+            introDelay={0.5}
+          />
+          <h1 className="hero-title font-sans tracking-tighter leading-none -mt-2 md:mt-0 inline-flex">
+            <MagnifyText
+              text="@iamsebbi"
+              as="span"
+              className="font-sans tracking-tighter leading-none"
+              minWeight={300}
+              maxWeight={900}
+              introDelay={0.5}
+            />
+            <motion.span 
+              className="ml-1 text-white inline-block origin-bottom"
+              initial={{ fontWeight: 900, rotate: 0 }}
+              animate={{ fontWeight: 300 }}
+              transition={{ fontWeight: { duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] } }}
+              whileHover={{
+                rotate: [0, -10, 10, -10, 0],
+                scale: 1.3,
+                transition: { duration: 0.5 }
+              }}
+            >
+              *
+            </motion.span>
           </h1>
         </motion.div>
 
@@ -69,6 +104,18 @@ const Hero = () => {
           </Button>
         </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        {...SCROLL_INDICATOR_ANIMATION}
+        className="absolute bottom-8 inset-x-0 mx-auto w-fit z-10 cursor-pointer"
+        onClick={() => scrollToSection("about")}
+      >
+        <ChevronDown 
+          className="w-8 h-8 text-white/60 hover:text-white transition-colors" 
+          strokeWidth={1.5}
+        />
+      </motion.div>
     </section>
   );
 };

@@ -118,7 +118,7 @@ const Works = () => {
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
             <Button
-              className="pointer-events-none !bg-black/40 !backdrop-blur-xl !border-white/20"
+              className="pointer-events-none"
               forceHover={true}
             >
               {cursorText}

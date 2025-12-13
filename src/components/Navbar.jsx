@@ -38,11 +38,11 @@ const Navbar = () => {
               href={`#${link.id}`}
               onClick={(e) => handleScrollToSection(e, link.id)}
               className={`
-                nav-link relative px-5 py-2.5 font-medium rounded-full transition-colors duration-300
+                nav-link relative px-5 py-2.5 rounded-full transition-all duration-300 lowercase
                 ${
                   isActive
-                    ? "text-black"
-                    : "text-[#86868b] md:hover:text-white"
+                    ? "text-black font-bold"
+                    : "text-white/70 font-normal md:hover:text-white"
                 }
               `}
             >
@@ -54,7 +54,10 @@ const Navbar = () => {
                 />
               )}
 
-              <span className="relative z-10">{link.label}</span>
+              <span className="relative z-10">
+                {link.label}
+                {isActive && "*"}
+              </span>
             </a>
           );
         })}
