@@ -65,6 +65,7 @@ const Footer = () => {
               // 1. DEZACTIVĂM ROTAȚIA
               // Săgeata ArrowUp va sta drept în sus (0 grade) permanent.
               rotateIcon={false}
+              glassTheme="hero"
               // 2. STILIZARE RESPONSIVE
               // Mobile: w-full și justify-between (text stânga, icon dreapta)
               // Desktop: w-auto și justify-center

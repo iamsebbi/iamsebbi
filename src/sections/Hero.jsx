@@ -37,6 +37,38 @@ const SCROLL_INDICATOR_ANIMATION = {
 
 const Hero = () => {
   const handleScrollToContact = () => scrollToSection("contact");
+  const videoRef = React.useRef(null);
+
+  // Intersection Observer pentru a opri/porni videoul
+  React.useEffect(() => {
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Secțiunea este vizibilă - pornește videoul
+            videoElement.play().catch((err) => {
+              console.log("Video autoplay prevented:", err);
+            });
+          } else {
+            // Secțiunea nu mai este vizibilă - oprește videoul
+            videoElement.pause();
+          }
+        });
+      },
+      {
+        threshold: 0.25, // Trigger când 25% din secțiune este vizibilă
+      }
+    );
+
+    observer.observe(videoElement.parentElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section
@@ -46,6 +78,7 @@ const Hero = () => {
       {/* Video Background Layer */}
       <div className="absolute inset-0 z-0">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
@@ -99,7 +132,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <motion.div {...BUTTON_ANIMATION}>
-          <Button onClick={handleScrollToContact} className="w-40 justify-between !text-2xl md:!text-xl">
+          <Button onClick={handleScrollToContact} glassTheme="hero" className="w-40 justify-between !text-2xl md:!text-xl">
             let's talk*
           </Button>
         </motion.div>
@@ -107,8 +140,10 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div
-        {...SCROLL_INDICATOR_ANIMATION}
-        className="absolute bottom-8 inset-x-0 mx-auto w-fit z-10 cursor-pointer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="scroll-indicator absolute bottom-24 md:bottom-8 inset-x-0 mx-auto w-fit z-10 cursor-pointer"
         onClick={() => scrollToSection("about")}
       >
         <ChevronDown 

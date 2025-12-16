@@ -1,8 +1,8 @@
 export const NAV_LINKS = [
-  { id: "hero", label: "Home" },
-  { id: "works", label: "Works" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
+  { id: "hero", label: "Home", icon: "Home" },
+  { id: "works", label: "Works", icon: "Briefcase" },
+  { id: "about", label: "About", icon: "User" },
+  { id: "contact", label: "Contact", icon: "Mail" },
 ];
 
 export const FOOTER_LINKS = [

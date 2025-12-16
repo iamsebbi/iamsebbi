@@ -144,7 +144,7 @@ const Contact = () => {
               </div>
 
               <div className="pt-2 sm:pt-4">
-                <Button icon={SendHorizontal} rotateIcon={false}>
+                <Button icon={SendHorizontal} rotateIcon={false} glassTheme="hero">
                   Submit
                 </Button>
               </div>

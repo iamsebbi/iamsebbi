@@ -52,7 +52,7 @@ const About = () => {
       </motion.div>
 
       {/* --- 2. CONȚINUT TEXT (Apare în stânga datorită flex-row-reverse) --- */}
-      <div className="w-full md:w-1/2 flex items-center justify-center p-8 md:p-20 bg-black">
+      <div className="w-full md:w-1/2 flex items-center justify-center py-12 px-8 md:p-20 bg-black">
         <motion.div
           className="max-w-xl w-full"
           variants={staggerContainer}
@@ -128,13 +128,22 @@ const About = () => {
             </div>
           </motion.div>
 
-          <motion.div variants={fadeIn}>
+          <motion.div variants={fadeIn} className="flex gap-4">
             <Button
               icon={Download}
               rotateIcon={false}
+              glassTheme="hero"
               onClick={() => console.log("Download CV")}
             >
               Resume
+            </Button>
+            
+            <Button
+              rotateIcon={false}
+              glassTheme="hero"
+              onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              All projects
             </Button>
           </motion.div>
         </motion.div>

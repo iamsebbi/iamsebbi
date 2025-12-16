@@ -14,6 +14,8 @@ const BlurImage = ({
   scaleOnHover = true,
   onTap,
   onActiveChange,
+  forceActive = false, // Prop nou pentru a forța starea active din exterior
+  category = "about projects", // Categoria proiectului
 }) => {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -24,6 +26,16 @@ const BlurImage = ({
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Actualizează isActive când forceActive se schimbă
+  useEffect(() => {
+    if (forceActive) {
+      setIsActive(true);
+    } else if (!forceActive && isMobile) {
+      // Reset blur când cardul iese din focus pe mobil
+      setIsActive(false);
+    }
+  }, [forceActive, isMobile]);
 
   // Notify parent when isActive changes
   useEffect(() => {
@@ -61,7 +73,7 @@ const BlurImage = ({
     <div 
       className="absolute inset-0 w-full h-full"
       onClick={handleTap}
-      onMouseLeave={() => isMobile && setIsActive(false)}
+      onMouseLeave={() => isMobile && !forceActive && setIsActive(false)}
     >
       {/* Imaginea clară */}
       <img
@@ -99,26 +111,37 @@ const BlurImage = ({
         />
       )}
 
-      {/* Buton Open - doar pe mobil când e activ, cu animație */}
+      {/* Buton Open - doar pe mobil când e activ */}
       {isMobile && isActive && (
         <motion.div 
           className="absolute inset-0 flex items-center justify-center z-20"
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ 
-            type: "spring", 
-            stiffness: 300, 
-            damping: 25,
-            delay: 0.1 
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <Button
-            onClick={handleOpenClick}
-            hideIcon={true}
-            className="text-xl px-8 py-3 !backdrop-blur-none !bg-white/20 !border-white/20"
-          >
-            about projects*
-          </Button>
+          <div className="relative inline-flex">
+            {/* Backdrop blur - apare cu delay */}
+            <motion.div
+              className="absolute inset-0 rounded-full"
+              style={{
+                backdropFilter: 'blur(20px) saturate(180%) brightness(1.1)',
+                WebkitBackdropFilter: 'blur(20px) saturate(180%) brightness(1.1)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            />
+            
+            {/* Butonul cu glassmorphism (fără backdrop blur) */}
+            <Button
+              onClick={handleOpenClick}
+              hideIcon={true}
+              glassTheme="hero"
+              className="text-xl px-8 py-3 relative z-10"
+            >
+              {category}*
+            </Button>
+          </div>
         </motion.div>
       )}
     </div>

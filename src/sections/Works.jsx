@@ -8,10 +8,46 @@ import { projects, projectsRow2 } from "../constants/services";
 // --- COMPONENTA CARD ---
 const ProjectCard = ({ project, setCursorActive, setCursorText, index = 0 }) => {
   const [isCardActive, setIsCardActive] = useState(false);
+  const [isCentered, setIsCentered] = useState(false);
   const navigate = useNavigate();
+  const cardRef = React.useRef(null);
+
+  // Intersection Observer pentru mobile - detectează când cardul e în centrul ecranului
+  useEffect(() => {
+    const cardElement = cardRef.current;
+    if (!cardElement) return;
+
+    // Verificăm dacă suntem pe mobil
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Când cardul este în centrul viewport-ului (50% vizibil)
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setIsCentered(true);
+          } else {
+            setIsCentered(false);
+          }
+        });
+      },
+      {
+        threshold: [0, 0.5, 1], // Trigger la 0%, 50%, și 100% vizibilitate
+        rootMargin: "-25% 0px -25% 0px", // Centrul ecranului (mijlocul 50%)
+      }
+    );
+
+    observer.observe(cardElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <motion.div
+      ref={cardRef}
       className="relative w-full md:w-1/2 h-[50vh] md:h-full group overflow-hidden border-r border-white/5 border-b"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -34,20 +70,22 @@ const ProjectCard = ({ project, setCursorActive, setCursorText, index = 0 }) => 
         src={project.image}
         alt={project.title}
         grayscale={true}
-        blurAmount="blur-xl"
+        blurAmount="blur-md"
         showNoise={true}
         onTap={() => navigate(`/services/${project.slug}`)}
         onActiveChange={setIsCardActive}
+        forceActive={isCentered} // Forțăm deblur când e centrat pe mobil
+        category={project.title}
       />
       
       {/* Overlay întunecat */}
       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-all duration-500 pointer-events-none" />
       
-      {/* Titlu și categorie - stânga-jos pe mobil și desktop, ascuns când activ pe mobil */}
+      {/* Titlu și categorie - partea de sus */}
       <div className={`absolute inset-0 flex flex-col z-10 pointer-events-none transition-all duration-500 ease-out
-        justify-end items-start pb-6 pl-4 pr-4
-        md:pb-10 md:pl-10 md:pr-10
-        ${isCardActive ? "opacity-0" : "opacity-100"}
+        justify-start items-start pt-6 pl-4 pr-4
+        md:pt-10 md:pl-10 md:pr-10
+        ${isCardActive || isCentered ? "opacity-0" : "opacity-100"}
         md:opacity-0 md:group-hover:opacity-100`}
       >
         <span className={`works-category text-[#007AFF] font-bold uppercase tracking-widest mb-1 transition-all duration-500
@@ -126,16 +164,6 @@ const Works = () => {
           </motion.div>
         </div>
       </motion.div>
-
-      {/* 2. BUTONUL CENTRAL (Intersecția celor 4) */}
-      <div className="absolute top-1/2 left-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
-        <Button
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="pointer-events-auto !bg-black/80 !backdrop-blur-2xl !border-white/30 hover:!bg-black"
-        >
-          See all services*
-        </Button>
-      </div>
 
       {/* 3. GRIDUL DE PROIECTE */}
       <div className="flex flex-col md:flex-row h-screen w-full">

@@ -14,9 +14,17 @@ const Button = ({
   // PROP NOU:
   forceHover = false, // Permite controlul extern al stării de hover
   hideIcon = false, // Ascunde iconița, afișează doar text
+  glassTheme = null, // 'hero' sau 'dark' pentru teme glassmorphism
 }) => {
   const startAngle =
     initialRotate !== null ? initialRotate : rotateIcon ? -45 : 0;
+
+  // Determine glass class based on theme
+  const glassClass = glassTheme === 'hero' 
+    ? 'glass-button-hero' 
+    : glassTheme === 'dark' 
+    ? 'glass-button-dark' 
+    : '';
 
   return (
     <motion.button
@@ -29,9 +37,8 @@ const Button = ({
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={`group flex items-center gap-3 ${hideIcon ? "px-5" : "pl-5 pr-2"} py-2 
-                  bg-white/10 backdrop-blur-xl border border-white/10 
-                  rounded-full shadow-[0_20px_40px_rgba(0,0,0,0.4)] 
-                  transition-colors duration-300 ${className}`}
+                  ${glassClass || 'bg-white/10 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)]'}
+                  rounded-full transition-colors duration-300 ${className}`}
     >
       <span className="button-text font-medium text-white/90 tracking-tight group-hover:text-white transition-colors whitespace-nowrap text-lg md:text-base">
         {children}
