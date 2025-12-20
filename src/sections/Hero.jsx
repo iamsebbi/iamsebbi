@@ -9,34 +9,34 @@ import { scrollToSection } from "../utils/scroll";
 const TEXT_ANIMATION = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }
+  transition: { duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
 };
 
 const BUTTON_ANIMATION = {
   initial: { opacity: 0, scale: 0.9, y: 20 },
   animate: { opacity: 1, scale: 1, y: 0 },
-  transition: { duration: 0.6, delay: 0.5, type: "spring", stiffness: 200 }
+  transition: { duration: 0.6, delay: 0.5, type: "spring", stiffness: 200 },
 };
 
 const SCROLL_INDICATOR_ANIMATION = {
   initial: { opacity: 0, y: -10 },
-  animate: { 
-    opacity: 1, 
+  animate: {
+    opacity: 1,
     y: 0,
     transition: {
       opacity: { duration: 0.8, delay: 0.8 },
-      y: { 
+      y: {
         duration: 1.5,
         repeat: Infinity,
         repeatType: "reverse",
-        ease: "easeInOut"
-      }
-    }
-  }
+        ease: "easeInOut",
+      },
+    },
+  },
 };
 
 const Hero = () => {
-  const handleScrollToContact = () => scrollToSection("contact");
+  const handleScrollToWorks = () => scrollToSection("works");
   const videoRef = React.useRef(null);
 
   // Intersection Observer pentru a opri/porni videoul
@@ -114,15 +114,21 @@ const Hero = () => {
               maxWeight={900}
               introDelay={0.5}
             />
-            <motion.span 
+            <motion.span
               className="ml-1 text-white inline-block origin-bottom"
               initial={{ fontWeight: 900, rotate: 0 }}
               animate={{ fontWeight: 300 }}
-              transition={{ fontWeight: { duration: 1.2, delay: 0.9, ease: [0.22, 1, 0.36, 1] } }}
+              transition={{
+                fontWeight: {
+                  duration: 1.2,
+                  delay: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              }}
               whileHover={{
                 rotate: [0, -10, 10, -10, 0],
                 scale: 1.3,
-                transition: { duration: 0.5 }
+                transition: { duration: 0.5 },
               }}
             >
               *
@@ -132,8 +138,12 @@ const Hero = () => {
 
         {/* CTA Button */}
         <motion.div {...BUTTON_ANIMATION}>
-          <Button onClick={handleScrollToContact} glassTheme="hero" className="w-40 justify-between !text-2xl md:!text-xl">
-            let's talk*
+          <Button
+            onClick={handleScrollToWorks}
+            glassTheme="hero"
+            className="w-36 justify-between !text-2xl md:!text-xl"
+          >
+            About
           </Button>
         </motion.div>
       </div>
@@ -146,8 +156,8 @@ const Hero = () => {
         className="scroll-indicator absolute bottom-24 md:bottom-8 inset-x-0 mx-auto w-fit z-10 cursor-pointer"
         onClick={() => scrollToSection("about")}
       >
-        <ChevronDown 
-          className="w-8 h-8 text-white/60 hover:text-white transition-colors" 
+        <ChevronDown
+          className="w-8 h-8 text-white/60 hover:text-white transition-colors"
           strokeWidth={1.5}
         />
       </motion.div>
