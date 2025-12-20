@@ -4,7 +4,7 @@ export const services = [
     slug: "web-design",
     title: "WEB DESIGN",
     category: "//01.",
-    image: "/public/webdesign.jpg",
+    image: "/webdesign.jpg",
     description:
       "Creating stunning, responsive websites that captivate your audience and drive results. From concept to launch, I craft digital experiences that blend aesthetics with functionality.",
     process: [
@@ -47,7 +47,7 @@ export const services = [
     slug: "ui-ux-design",
     title: "UI/UX DESIGN",
     category: "//02.",
-    image: "/public/uiUxdesign.jpg",
+    image: "/uiUxdesign.jpg",
     description:
       "Designing intuitive and engaging user interfaces that enhance user experience and drive engagement. Every pixel is crafted with purpose and precision.",
     process: [
@@ -90,7 +90,7 @@ export const services = [
     slug: "creative-design",
     title: "CREATIVE DESIGN",
     category: "//03.",
-    image: "/public/creativedesign.jpg",
+    image: "/creativedesign.jpg",
     description:
       "Bringing bold creative visions to life through innovative design solutions. From branding to visual identity, I create memorable experiences that stand out.",
     process: [
@@ -133,7 +133,7 @@ export const services = [
     slug: "development",
     title: "DEVELOPMENT",
     category: "//04.",
-    image: "/public/development.jpg",
+    image: "/development.jpg",
     description:
       "Building robust, scalable applications with clean code and modern technologies. From frontend to backend, I deliver solutions that perform.",
     process: [
