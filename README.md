@@ -1,37 +1,79 @@
+```markdown
 # Sebi — Portfolio
 
-Personal portfolio website.
+Portfolio personal construit ca Single Page App (SPA) cu **React + Vite**, stilizat cu **Tailwind CSS** și animat cu **Framer Motion**.
 
 ## Live
-- Website: https://iamsebbi.github.io/ (or add your custom domain link)
+- Website: https://iamsebbi.github.io/
 
-## About
-This is my personal portfolio where I showcase projects, skills, and ways to contact me.
+## Tech stack
+- React (`react`, `react-dom`)
+- Vite
+- Tailwind CSS (+ PostCSS / Autoprefixer)
+- React Router (`react-router-dom`) — rute:
+  - `/` (Home)
+  - `/services/:slug` (ServiceDetail)
+- Framer Motion (animații)
+- Lucide React (iconițe)
+- ESLint (linting)
 
-## Built with
-- HTML / CSS / JavaScript (edit this to match your stack)
-- (Optional) Bootstrap / Tailwind / React / etc.
+## Project structure (pe scurt)
+- `index.html` — entry HTML (root container)
+- `src/main.jsx` — bootstrap React + import CSS (`styles/index.css`, `styles/fonts.css`)
+- `src/App.jsx` — router + scroll-to-top la schimbarea rutei
+- `src/pages/` — pagini (ex. `Home`, `ServiceDetail`)
+- `src/components/` / `src/sections/` — componente/sectiuni UI
+- `src/styles/` — stiluri (Tailwind + fonturi)
+- `public/` — assets statice (imagini + `heroVideo.mp4`)
 
-## Features
-- Responsive layout
-- Projects section
-- Contact links
+## Requirements
+- Node.js (recomandat: versiune LTS)
+- npm (sau pnpm/yarn, dar repo-ul are `package-lock.json` => npm e “default”)
 
 ## Run locally
-Option 1 (simple):
-- Open `index.html` in your browser
+1. Instalează dependențele:
+   ```bash
+   npm install
+   ```
 
-Option 2 (recommended local server):
+2. Pornește serverul de development:
+   ```bash
+   npm run dev
+   ```
+   Deschide URL-ul afișat de Vite (de obicei `http://localhost:5173`).
+
+## Build & preview (prod-like)
+- Build:
+  ```bash
+  npm run build
+  ```
+- Preview local pe build:
+  ```bash
+  npm run preview
+  ```
+
+## Lint
 ```bash
-# Python
-python -m http.server 8000
-# then open http://localhost:8000
+npm run lint
 ```
 
+## Assets
+În `public/` există:
+- `heroVideo.mp4`
+- imagini: `development.jpg`, `webdesign.jpg`, `uiUxdesign.jpg`, `creativedesign.jpg`
+
 ## Deploy
-Hosted with GitHub Pages.
+Proiectul este gândit pentru GitHub Pages (link-ul live e pe `iamsebbi.github.io`).
+În mod tipic flow-ul e:
+1) `npm run build`
+2) publici conținutul din `dist/` pe GitHub Pages (prin GitHub Actions sau branch `gh-pages`)
+
+Dacă vrei, îți adaptez secțiunea asta exact pe setup-ul tău (spune-mi dacă folosești Actions și cum e configurat Pages în repo).
 
 ## Contact
 - GitHub: https://github.com/iamsebbi
-- Email: (your email)
-- LinkedIn: (your link)
+- Email: (completează)
+- LinkedIn: (completează)
+```
+
+Dacă vrei să-l fac și mai “bazat pe codebase”, spune-mi ce vrei să apară la “Features” (ex. ce secțiuni are Home: projects, skills, services etc.) și îți ajustez README-ul după componentele reale din `src/pages` / `src/sections`.
