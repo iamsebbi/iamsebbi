@@ -75,5 +75,3 @@ Dacă vrei, îți adaptez secțiunea asta exact pe setup-ul tău (spune-mi dacă
 - Email: (completează)
 - LinkedIn: (completează)
 ```
-
-Dacă vrei să-l fac și mai “bazat pe codebase”, spune-mi ce vrei să apară la “Features” (ex. ce secțiuni are Home: projects, skills, services etc.) și îți ajustez README-ul după componentele reale din `src/pages` / `src/sections`.
